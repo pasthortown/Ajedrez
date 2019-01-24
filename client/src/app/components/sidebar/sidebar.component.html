@@ -1,0 +1,46 @@
+<nav
+  class="sidebar"
+  [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }"
+>
+  <div class="list-group">
+    <a
+      [routerLink]="['/main']"
+      [routerLinkActive]="['router-link-active']"
+      class="list-group-item"
+    >
+      <i class="fa fa-fw fa-dashboard"></i>&nbsp; <span>Main</span>
+    </a>
+    <a
+      [routerLink]="['/board']"
+      [routerLinkActive]="['router-link-active']"
+      class="list-group-item"
+    >
+      <i class="fa fa-fw fa-dashboard"></i>&nbsp; <span>Board</span>
+    </a>
+    <div class="header-fieldsss">
+      <div class="nested-menu">
+        <a class="list-group-item" (click)="addExpandClass('profile')">
+          <i class="fa fa-user"></i>&nbsp; <span>{{ user.name }}</span>
+        </a>
+        <li class="nested" [class.expand]="showMenu === 'profile'">
+          <ul class="submenu">
+            <li>
+              <a
+                [routerLink]="['/profile']"
+                [routerLinkActive]="['router-link-active']"
+                class="list-group-item"
+              >
+                Perfil
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/login']" (click)="logOut()">
+                <span>&nbsp;Cerrar Sesión</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </div>
+</nav>

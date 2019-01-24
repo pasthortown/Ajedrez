@@ -1,0 +1,122 @@
+table {
+  margin: 0 auto;
+  border-style: solid;
+  border-color: #29293d;
+  border-width: 10px;
+  background: #666699;
+}
+
+td {
+  text-align: center;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #666699;
+}
+
+.square {
+  width: 70px;
+  height: 70px;
+}
+
+tr:nth-child(odd) td:nth-child(even),
+tr:nth-child(even) td:nth-child(odd) {
+  background: #f0f0f5;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #f0f0f5;
+}
+
+td:hover {
+  background-color: #95ce6d9b;
+  border-style: solid;
+  border-width: 2px;
+  border-color: greenyellow;
+}
+
+tr:nth-child(odd):hover td:nth-child(even):hover,
+tr:nth-child(even):hover td:nth-child(odd):hover {
+  background-color: #95ce6d9b;
+  background-color: #95ce6d9b;
+  border-style: solid;
+  border-width: 2px;
+  border-color: greenyellow;
+}
+
+.white {
+  color: white;
+  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+.black {
+  color: #5d667c;
+  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+.shadow {
+  color: #fbff0077;
+}
+
+.capture {
+  color: #ff91008c;
+}
+
+.check2white {
+  color: #ff0000ad;
+}
+
+.check2black {
+  color: #ff0000ad;
+}
+
+.border {
+  background-color: #828299;
+  width: 30px;
+  height: 10px;
+  border-style: solid;
+  border-width: 2px;
+  font-weight: normal;
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  border-color: #52526e;
+  text-align: center;
+}
+
+.title-table {
+  background-color: #828299;
+  min-width: 10px;
+  height: 10px;
+  border-style: solid;
+  border-width: 2px;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  border-color: #52526e;
+  text-align: center;
+}
+
+.captured-space {
+  background-color: #ffff;
+  height: 10px;
+  min-width: 50px;
+  text-align: center;
+  border-style: solid;
+  border-width: 2px;
+  font-weight: normal;
+  font-family: "Courier New", Courier, monospace;
+  color: black;
+  border-color: #52526e;
+}
+
+.clock {
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.clock-moving {
+  color: orange;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.historyEvent:hover {
+  background-color: yellow;
+}

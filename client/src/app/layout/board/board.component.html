@@ -1,0 +1,233 @@
+<div class="row">
+  <div class="col-8">
+    <table>
+      <tr *ngFor="let row of board.pieces; let rowIndex = index">
+        <th class="border">{{ rows[rowIndex] }}</th>
+        <td
+          class="square"
+          *ngFor="let piece of row; let columnIndex = index"
+          (click)="cordsClick(rowIndex, columnIndex)"
+        >
+          <span class="{{ piece.image }}"></span>
+        </td>
+      </tr>
+      <tr>
+        <th class="border"></th>
+        <th class="border text-center" *ngFor="let column of columns">
+          {{ column }}
+        </th>
+      </tr>
+    </table>
+  </div>
+  <div class="col-4">
+    <table class="col-12">
+      <tr>
+        <th class="title-table" colspan="2">
+          JUGADOR NEGRAS&nbsp;({{ board.blackPiecesValue }})&nbsp;<span
+            class="{{ blackClock }}"
+            ><i class="far fa-clock"></i>&nbsp;{{ minutsBlacks }}:{{
+              secondsBlacks
+            }}</span
+          >
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="black fas fa-chess-rook fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.blackRookCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="black fas fa-chess-knight fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.blackKnightCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="black fas fa-chess-bishop fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.blackBishopCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="black fas fa-chess-queen fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.blackQueenCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="black fas fa-chess-king fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.blackKingCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="black fas fa-chess-pawn fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.blackPawnCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+    </table>
+
+    <table class="col-12 mt-2">
+      <tr>
+        <th class="title-table" colspan="2">
+          JUGADOR BLANCAS&nbsp;({{ board.whitePiecesValue }})&nbsp;<span
+            class="{{ whiteClock }}"
+            ><i class="far fa-clock"></i>&nbsp;{{ minutsWhites }}:{{
+              secondsWhites
+            }}</span
+          >
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="white fas fa-chess-rook fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.whiteRookCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="white fas fa-chess-knight fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.whiteKnightCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="white fas fa-chess-bishop fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.whiteBishopCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="white fas fa-chess-queen fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.whiteQueenCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="white fas fa-chess-king fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.whiteKingCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+      <tr>
+        <th class="border">
+          <span class="white fas fa-chess-pawn fa-1x"></span>
+        </th>
+        <th class="captured-space">
+          <i
+            *ngFor="let piece of board.whitePawnCaps"
+            class="{{ piece.image }} ml-2"
+          ></i>
+        </th>
+      </tr>
+    </table>
+
+    <table class="col-12 mt-2">
+      <tr>
+        <th class="title-table">HISTORIAL</th>
+      </tr>
+      <tr>
+        <th class="captured-space">
+          <div
+            class="col-12"
+            style="height: 125px; overflow-y: auto; overflow-x: hidden;"
+          >
+            <div
+              *ngFor="let move of board.history"
+              class="col-12 text-left historyEvent"
+            >
+              <strong>{{ move.id }}.</strong>{{ move.move }}&nbsp;
+            </div>
+          </div>
+        </th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<ng-template #pawnPromotionModalDialog let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      <strong>Seleccione:</strong>
+    </h4>
+    <button type="button" class="close" (click)="d('Cross click')">
+      <span>&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table>
+      <tr>
+        <td
+          *ngFor="let piece of piecesPromote; let columnIndex = index"
+          (click)="c(piece.getLabel())"
+        >
+          <span class="{{ piece.image }}"></span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="c('cancel')">
+      Cancelar
+    </button>
+    <button type="button" class="btn btn-success" (click)="c('Ok click')">
+      Aceptar
+    </button>
+  </div>
+</ng-template>
