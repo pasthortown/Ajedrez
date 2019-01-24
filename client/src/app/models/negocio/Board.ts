@@ -1,4 +1,4 @@
-import { Piece } from './piece';
+import { Piece } from './Piece';
 
 export class Board {
     pieces: any[];
